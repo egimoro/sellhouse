@@ -1,0 +1,9 @@
+<h2>Top Locations</h2>
+<div class="locations-menu">
+
+    <a *ngFor="let location of locations"
+    routerLink="/locations/{{location.id}}">{{location.suburb}}</a>
+
+</div>
+
+<app-location-search></app-location-search>

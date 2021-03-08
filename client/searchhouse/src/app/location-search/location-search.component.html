@@ -1,0 +1,14 @@
+<div id="search-component">
+    <label for="search-box">Location Search</label>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+    <ul class="search-result">
+        <li *ngFor="let location of locations$ | async">
+
+            <a routerLink="/locations/{{location.id}}">{{location.suburb}}</a>
+
+        </li>
+
+    </ul>
+
+</div>

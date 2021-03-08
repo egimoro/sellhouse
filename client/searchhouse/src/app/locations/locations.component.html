@@ -1,0 +1,50 @@
+<h2>Locations</h2>
+
+
+<div>
+    <label for="suburb">Suburb:</label>
+    <input  for="suburb" #locationhSuburb />
+
+    <label for="rooms">Rooms:</label>
+    <input  for="rooms" #locationhRooms />
+
+    <label for="housetype">House Type:</label>
+    <input  for="housetype" #locationhHousetype />
+
+    <label for="price">House Price:</label>
+    <input  for="price" #locationhPrice />
+
+    <label for="datw">Date:</label>
+    <input  for="date" #locationhDate />
+
+    <label for="seller">Seller:</label>
+    <input  for="seller" #locationhSeller />
+
+    <button class="add-button" (click)="add(locationhSuburb.value, 
+    locationhRooms.value, 
+    locationhHousetype.value, 
+    locationhPrice.value,
+    locationhDate.value, 
+    locationhSeller.value);
+     locationhSuburb.value='';
+    locationhRooms.value='';
+     locationhHousetype.value=''; 
+     locationhPrice.value='';
+    locationhDate.value=''; 
+    locationhSeller.value=''; 
+    ">   
+    Add Location
+    </button>
+    
+</div>
+
+<ul class="locations">
+    <li *ngFor="let location of locations">
+        <a routerLink="/locations/{{location.id}}">{{location.seller}}</a>
+        <button class="data" title="delete location"
+    (click)="delete(location)">x</button>
+
+    </li>
+    
+
+</ul>
