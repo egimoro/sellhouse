@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Locationh } from '../location';
 import { LocationService } from '../location.service';
 
@@ -10,6 +11,7 @@ import { LocationService } from '../location.service';
 export class LocationsComponent implements OnInit {
 
   locations: Locationh[];
+  seller = '';
 
   constructor(private locationService: LocationService) { }
 
@@ -56,4 +58,18 @@ export class LocationsComponent implements OnInit {
       this.locationService.deleteLocation(location).subscribe();
     }
 
+
+    searchSeller(): void{
+      this.locationService.searchSellers(this.seller).subscribe(
+        data =>{
+          this.locations = data;
+          console.log(data)
+        },
+        error =>{
+          console.log(error)
+        }
+      );
+    }
+
+   
 }

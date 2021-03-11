@@ -1,5 +1,25 @@
 <h2>Locations</h2>
 
+<div class="col-mf-8">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" 
+            placeholder="Search by seller" [(ngModel)]="seller" />
+        
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button"
+            (click)="searchSeller()">
+                Search
+            </button>
+
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <div>
     <label for="suburb">Suburb:</label>
@@ -14,7 +34,7 @@
     <label for="price">House Price:</label>
     <input  for="price" #locationhPrice />
 
-    <label for="datw">Date:</label>
+    <label for="date">Date:</label>
     <input  for="date" #locationhDate />
 
     <label for="seller">Seller:</label>

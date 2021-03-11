@@ -1,10 +1,13 @@
 from django.urls import re_path, path
+from django.conf.urls import url
 
 from . import views
 
 urlpatterns = [
-    re_path(r'^locations/$', views.location_list),
-    re_path(r'^locations/(?P<pk>[0-9]+)$', views.location_detail), 
+   path('locations', views.location_list),
+   path('locations/<int:pk>', views.location_detail),
+   path('locations/seller/', views.SellerListView.as_view()),
+    
 ]
 
 

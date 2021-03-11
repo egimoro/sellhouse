@@ -55,15 +55,16 @@ export class LocationService {
     )
   }
 
-  searchLocations(term: string): Observable<Locationh[]>{
+  searchSellers(term: any): Observable<Locationh[]>{
     if (!term.trim()){
       return of([]);
     }
-    return this.http.get<Locationh[]>(`${this.locateUrl}/?suburb=${term}`).pipe(
-      tap(x => x.length ?
-        this.log(`found locations matching "${term}"`) :
-        this.log(`no locations matching "${term}"`) ),
-    catchError(this.handleError<Locationh[]>('searchLocations', []))
+
+    return this.http.get<Locationh[]>(`${this.locateUrl}/seller/?search=${term}`).pipe(
+      tap(x => x.length ? 
+          this.log(`found sellers matching "${term}"`):
+            this.log(`no sellers matching ${term}`)),
+            catchError(this.handleError<Locationh[]>('searchSellers', []))
     );
   }
 

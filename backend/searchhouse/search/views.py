@@ -1,11 +1,12 @@
 from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
+from django.views.decorators.csrf import csrf_exempt
 from .models import Location
 from .serializers import LocationSerializer
+from rest_framework import filters, generics
 
-
-@api_view(['GET', 'POST'])
+@csrf_exempt
 def location_list(request):
     if request.method == 'GET':
         locations = Location.objects.all()
@@ -21,7 +22,7 @@ def location_list(request):
         return JsonResponse(serializer.errors, status=400)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@csrf_exempt
 def location_detail(request, pk):
     try:
         location = Location.objects.get(pk=pk)
@@ -44,3 +45,9 @@ def location_detail(request, pk):
         location.delete()
         return HttpResponse(status=204)
 
+
+class SellerListView(generics.ListAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['seller']

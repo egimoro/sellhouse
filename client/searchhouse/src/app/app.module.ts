@@ -9,7 +9,8 @@ import { LocationsComponent } from './locations/locations.component';
 import { LocationDetailComponent } from './location-detail/location-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LocationSearchComponent } from './location-search/location-search.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { LocationSearchComponent } from './location-search/location-search.compo
     LocationDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    LocationSearchComponent
+    
   ],
   imports: [
     BrowserModule,
